@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Foundation | Welcome</title>
-    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <title>Khoa Nguyen Portfolio | Welcome</title>
+    <link rel="stylesheet" href="foundation-6/css/foundation.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -32,15 +32,15 @@
           </div>
           <div class="callout primary">
             <div class="row column">
-              <h1>Hello! This is the portfolio of a very witty person.</h1>
-              <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla.</p> -->
+              <h5>Hello! This is the portfolio of a very witty person.</h5>
             </div>
           </div>
+
           <div class="row small-up-12 medium-up-12 large-up-12" style="min-height: 700px;">      
           <ul class="tabs" data-tabs id="example-tabs" >
             <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">All Project</a></li>
             <li class="tabs-title"><a href="#panel2">Experience</a></li>
-            <li class="tabs-title"><a href="#panel3">Contact Me</a></li>
+            <li class="tabs-title"><a href="#panel3">About me</a></li>
           </ul>    
           <div class="tabs-content" data-tabs-content="example-tabs">
             <div class="tabs-panel is-active" id="panel1">          
@@ -79,13 +79,19 @@
               </div>                     
             </div>
             <div class="tabs-panel" id="panel2">
-             
+            <progress class="secondary" max="100" value="75"></progress>
+<progress class="success" max="100" value="75"></progress>
+<progress class="warning" max="100" value="75"></progress>
+<progress class="alert" max="100" value="75"></progress>
+              <button class="tiny hollow button" href="#">Success Color</button>
+
             </div>
             <div class="tabs-panel" id="panel3">
              <div class="row">
               <div class="medium-6 columns">
-                <h3>Contact Me</h3>
-                <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor.</p>
+                <h4>Hello, i'm Khoa Nguyen, a Technology Developer. </h4>
+                <p>I love technology. I always spend many time for new technology. I can learn every knowledge about the technology. When i 18 year old, i had a old computer. It run windows 98 OS. I didn't have much money buy new technology books, i save money to buy old technology books. I learned that way. Now and Future, i learning how to make a AI with my rasberry pi.
+                </p>
                 <ul class="menu">
                   <li><a href="#">Dribbble</a></li>
                   <li><a href="#">Facebook</a></li>
@@ -101,7 +107,7 @@
                 </label>
                 <label>
                   Message
-                  <textarea placeholder="holla at a designerd" id="content"></textarea>
+                  <textarea placeholder="Send me your questions" id="content"></textarea>
                 </label>
                 <input type="submit" id="sendmail" class="button expanded" value="Submit">
               </div>
@@ -113,13 +119,12 @@
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="foundation-6/js/foundation.js"></script>
     <script>
     $(document).foundation();
     </script>
     <script type="text/javascript">
-      $("#sendmail").on('click', function() {   
-      alert("a;jskld") ;    
+      $("#sendmail").on('click', function() {            
         $.ajax({
             type: 'POST',
             url: 'https://mandrillapp.com/api/1.0/messages/send.json',
@@ -127,7 +132,7 @@
               'key': 'xG1NQzvg9Pm5myeDOgLYEg',
               'message': {
                 'from_email': 'khoanguyen@lab129.com',
-                'to': [
+                'to': [                   
                     {
                       'email': $("#email").val(),
                       'name': $("#name").val(),
@@ -135,25 +140,36 @@
                     }
                   ],
                 'autotext': 'true',
-                'subject': 'YOUR SUBJECT HERE!',
-                'html': $("#content").val()
-              },
+                'subject': 'Thank your contact',
+                'html': '<p>I will reply your questions. Thank you so much!</p><br><br><strong><em>Khoa Nguyen</em></strong>'
+              }
+            }
+           }).done(function(response) {
+             console.log(response); // if you're into that sorta thing
+           });
+        $.ajax({
+            type: 'POST',
+            url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+            data: {
+              'key': 'xG1NQzvg9Pm5myeDOgLYEg',
               'message': {
                 'from_email': 'khoanguyen@lab129.com',
-                'to': [
+                'to': [                   
                     {
-                      'email': 'khoanguyen@lab129.com',
-                      'name': $("#name").val(),
+                      'email': 'codek365@gmail.com',
+                      'name': 'admin',
                       'type': 'to'
                     }
                   ],
                 'autotext': 'true',
-                'subject': 'YOUR SUBJECT HERE!',
+                'subject': 'Hey Khoa, have some body contact you',
                 'html': $("#content").val()
               }
             }
            }).done(function(response) {
              console.log(response); // if you're into that sorta thing
+             alert("Thank you your contact!") ; 
+             window.location.reload();
            });
       });
     </script>
