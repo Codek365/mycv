@@ -19,6 +19,7 @@
              <small><i class="fa fa-phone"></i> (+84) 0934141331</small><br>
              <small><i class="fa fa-envelope"></i> codek365@gmail.com</small><br>
              <small><i class="fa fa-map-marker"></i> Ho Chi Minh Viet Nam</small><br>
+             <small><i class="fa fa-skype"></i></i> Coderfarm</small><br>
             </p>
           </div>
         </div>
@@ -26,7 +27,7 @@
           <div class="title-bar hide-for-large">
             <div class="title-bar-left">
               <button class="menu-icon" type="button" data-open="my-info"></button>
-              <span class="title-bar-title">Mike Mikerson</span>
+              <span class="title-bar-title">KHOA NGUYEN</span>
             </div>
           </div>
           <div class="callout primary">
@@ -35,22 +36,52 @@
               <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla.</p> -->
             </div>
           </div>
-          <div class="row small-up-12 medium-up-12 large-up-12">      
+          <div class="row small-up-12 medium-up-12 large-up-12" style="min-height: 700px;">      
           <ul class="tabs" data-tabs id="example-tabs" >
-            <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">All My Project</a></li>
-            <li class="tabs-title"><a href="#panel2">Contact Me</a></li>
+            <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">All Project</a></li>
+            <li class="tabs-title"><a href="#panel2">Experience</a></li>
+            <li class="tabs-title"><a href="#panel3">Contact Me</a></li>
           </ul>    
           <div class="tabs-content" data-tabs-content="example-tabs">
             <div class="tabs-panel is-active" id="panel1">          
-            <div class="row small-up-2 medium-up-3 large-up-4">
-              <div class="column"><a href=""><img class="thumbnail" src="images/nail.png"></a></div>
-                <div class="column"><a href=""><img class="thumbnail" src="images/nail.png" ></a></div>
-                <div class="column"><a href=""><img class="thumbnail" src="images/nail.png" ></a></div>
-                <div class="column"><a href=""><img class="thumbnail" src="images/nail.png" ></a></div>
-                <div class="column"><a href=""><img class="thumbnail" src="images/nail.png" ></a></div>
+              <div class="row small-up-12 medium-up-3 large-up-3">
+                <div class="column">
+                  <img class="thumbnail" src="images/nail.png">
+                  <h5>NAIL</h5>
+                  <a class="alert button" href="#" target="BLANK">DEMO FRONT END</a>
+                  <a class="alert button" href="#" target="BLANK">DEMO BACK END</a>
+
+                </div>
+                <div class="column">
+                  <a href=""><img class="thumbnail" src="images/raovat.png" ></a>
+                  <h5>ADVs</h5>
+                  <a class="alert button" href="#" target="BLANK">DEMO FRONT END</a>
+                  <a class="alert button" href="#" target="BLANK">DEMO BACK END</a>
+                </div>
+                <div class="column">
+                  <a href=""><img class="thumbnail" src="images/mall.png" ></a>
+                  <h5>MALL</h5>
+                  <a class="alert button" href="#" target="BLANK">DEMO FRONT END</a>
+                  <a class="alert button" href="#" target="BLANK">DEMO BACK END</a>
+                </div>
+                <div class="column">
+                  <a href=""><img class="thumbnail" src="images/crm.png" ></a>
+                  <h5>CRM</h5>
+                  <a class="alert button" href="#" target="BLANK">DEMO FRONT END</a>
+                  <a class="alert button" href="#" target="BLANK">DEMO BACK END</a>
+                </div>
+                <div class="column">
+                  <a href=""><img class="thumbnail" src="images/cargo.png" ></a>
+                  <h5>CARGO</h5>
+                  <a class="alert button" href="#" target="BLANK">DEMO FRONT END</a>
+                  <a class="alert button" href="#" target="BLANK">DEMO BACK END</a>
+                </div>
               </div>                     
             </div>
             <div class="tabs-panel" id="panel2">
+             
+            </div>
+            <div class="tabs-panel" id="panel3">
              <div class="row">
               <div class="medium-6 columns">
                 <h3>Contact Me</h3>
@@ -63,16 +94,16 @@
               </div>
               <div class="medium-6 columns">
                 <label>Name
-                  <input type="text" placeholder="Name">
+                  <input type="text" id="name" placeholder="Name">
                 </label>
                 <label>Email
-                  <input type="text" placeholder="Email">
+                  <input type="text" id="email" placeholder="Email">
                 </label>
                 <label>
                   Message
-                  <textarea placeholder="holla at a designerd"></textarea>
+                  <textarea placeholder="holla at a designerd" id="content"></textarea>
                 </label>
-                <input type="submit" class="button expanded" value="Submit">
+                <input type="submit" id="sendmail" class="button expanded" value="Submit">
               </div>
               </div>
             </div>     
@@ -85,6 +116,46 @@
     <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script>
     $(document).foundation();
+    </script>
+    <script type="text/javascript">
+      $("#sendmail").on('click', function() {   
+      alert("a;jskld") ;    
+        $.ajax({
+            type: 'POST',
+            url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+            data: {
+              'key': 'xG1NQzvg9Pm5myeDOgLYEg',
+              'message': {
+                'from_email': 'khoanguyen@lab129.com',
+                'to': [
+                    {
+                      'email': $("#email").val(),
+                      'name': $("#name").val(),
+                      'type': 'to'
+                    }
+                  ],
+                'autotext': 'true',
+                'subject': 'YOUR SUBJECT HERE!',
+                'html': $("#content").val()
+              },
+              'message': {
+                'from_email': 'khoanguyen@lab129.com',
+                'to': [
+                    {
+                      'email': 'khoanguyen@lab129.com',
+                      'name': $("#name").val(),
+                      'type': 'to'
+                    }
+                  ],
+                'autotext': 'true',
+                'subject': 'YOUR SUBJECT HERE!',
+                'html': $("#content").val()
+              }
+            }
+           }).done(function(response) {
+             console.log(response); // if you're into that sorta thing
+           });
+      });
     </script>
   </body>
 </html>
